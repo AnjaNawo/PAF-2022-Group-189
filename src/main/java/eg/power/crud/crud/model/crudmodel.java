@@ -2,7 +2,7 @@ package eg.power.crud.crud.model;
 
 public class crudmodel {
 	
-	
+	private int id;
 	private String lineNo;
 	private String eid;
 	private String ename;
@@ -20,7 +20,7 @@ public class crudmodel {
 	}
 	
 	
-	public crudmodel(String lineNo, String eid, String ename, int ephone, String areaNo, String areaName,
+	public crudmodel(int id, String lineNo, String eid, String ename, int ephone, String areaNo, String areaName,
 			String startTime, String endTime, String date, String reason) {
 		super();
 		this.lineNo = lineNo;
@@ -33,6 +33,7 @@ public class crudmodel {
 		this.endTime = endTime;
 		this.date = date;
 		this.reason = reason;
+		this.id = id;
 	}
 
 
@@ -133,6 +134,14 @@ public class crudmodel {
 
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

@@ -74,5 +74,53 @@ public class crudservice {
 		
 		return data;
 	}
+	
+public ArrayList<crudmodel> getPowercutById(int id) throws SQLException{
+		
+		ArrayList<crudmodel> data = new ArrayList<crudmodel>();
+		
+		String select = "select * from powercut schedule details where id =? ";
+		PreparedStatement ps = con.prepareStatement(select);
+		ps.setInt(1,id);
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			crudmodel model = new crudmodel();
+			
+			model.setLineNo(rs.getString("lineNo"));
+			model.setAreaNo(rs.getString("areaNo"));
+			model.setAreaName(rs.getString("areaName"));
+			model.setStartTime(rs.getString("startTime"));
+			model.setEndTime(rs.getString("endTime"));
+			model.setDate(rs.getString("date"));
+			model.setReason(rs.getString("reason"));	
+			data.add(model);
+		}
+		
+		return data;
+	}
+
+	public crudmodel updatePowercut(crudmodel powercut) {
+	String insert = "update powercut schedule details set lineNo=?,areaNo,areaName,startTime,endTime,date,reason) values(?,?,?,?,?,?,?) ";
+	
+	try {
+		PreparedStatement ps = con.prepareStatement(insert);
+		ps.setInt(1, powercut.getId());
+		ps.setString(2, powercut.getLineNo() );
+		ps.setString(3, powercut.getAreaNo());
+		ps.setString(4, powercut.getAreaName());
+		ps.setString(5, powercut.getStartTime());
+		ps.setString(6, powercut.getEndTime());
+		ps.setString(7, powercut.getDate());
+		ps.setString(8, powercut.getReason());
+		
+		ps.executeUpdate();
+			}catch(Exception e) {
+		System.out.println(e + "data insert unsucess.");
+	}
+	
+	return powercut;
+}
+
 
 }

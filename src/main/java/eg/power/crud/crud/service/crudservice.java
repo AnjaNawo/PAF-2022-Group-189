@@ -121,6 +121,21 @@ public ArrayList<crudmodel> getPowercutById(int id) throws SQLException{
 	
 	return powercut;
 }
+	
+	public int deletePowercut(int id) {
+		String insert = "delete from powercut schedule details where id =?";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(insert);
+			ps.setInt(1,id);
+			
+			ps.execute();
+				}catch(Exception e) {
+			System.out.println(e + "data deletion unsucess.");
+		}
+		
+		return id;
+	}
 
 
 }

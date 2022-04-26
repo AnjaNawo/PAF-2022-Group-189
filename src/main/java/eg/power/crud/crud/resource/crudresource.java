@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import eg.power.crud.crud.model.crudmodel;
 import eg.power.crud.crud.service.crudservice;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -47,10 +48,19 @@ public class crudresource {
 	@Path("/updatePowercut")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public crudmodel updatePowercu(crudmodel powercut) {
+	public crudmodel updatePowercut(crudmodel powercut) {
 		return service.updatePowercut(powercut);
 	
 	}
+	
+	@Path("/deletePowercutById/(id)")
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public int deletePowercut(@PathParam("id") int id) {
+		return service.deletePowercut(id);
+	
+	}
+
 
 }
  
